@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import Playerselect from "./playerselect";
+import Gameboard from "./gameboard";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
-//create your first component
 const Home = () => {
+	const [player1, setPlayer1] = useState("player1");
+	const [player2, setPlayer2] = useState("");
+	const [first, setFirst] = useState("");
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+			<div className="container-fluid">
+				<div className="text-center text-light vh-100">
+					<div className="row">
+						<h1 className="my-4">Tic Tac Toe <small><small>in React.js</small></small></h1>
+					</div>
+					{(player1 !== "player1" && player2 !== "" && first !== "") ?
+						<Gameboard player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} first={first} setFirst={setFirst} /> :
+						<Playerselect player1={player1} setPlayer1={setPlayer1} player2={player2} setPlayer2={setPlayer2} first={first} setFirst={setFirst} /> }
+				</div>
+			</div>
+		</>
 	);
 };
 
