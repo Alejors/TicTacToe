@@ -13,8 +13,8 @@ const Playerselect = (props) => {
                     <input type="text" id="player1" onChange={(e) => props.setPlayer1(e.target.value)} placeholder="Player 1 username" />
                     <input type="text" id="player2" onChange={(e) => props.setPlayer2(e.target.value)} placeholder="Player 2 username" /><br />
                     <h4 className="mt-2">Choose {props.player1}'s weapon</h4>
-                    <button onClick={(e) => props.setFirst(e.target.value)} className="weapon mt-2 me-4 display-4 py-2 px-4 bg-dark bg-opacity-50" id="x" value="X">X</button>
-                    <button onClick={(e) => props.setFirst(e.target.value)} className="weapon mt-2 ms-4 display-4 py-2 px-4 bg-dark bg-opacity-50" id="o" value="O">O</button>
+                    <button onClick={(e) => {props.setFirst(e.target.value), props.setSecond('O')}} className="weapon mt-2 me-4 display-4 py-2 px-4 bg-dark bg-opacity-50" id="x" value="X">X</button>
+                    <button onClick={(e) => {props.setFirst(e.target.value), props.setSecond('X')}} className="weapon mt-2 ms-4 display-4 py-2 px-4 bg-dark bg-opacity-50" id="o" value="O">O</button>
 
                 </div>
             </div>
