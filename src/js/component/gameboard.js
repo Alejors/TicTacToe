@@ -85,11 +85,11 @@ const Gameboard = (props) => {
     return (
         <>
             <div className="row mb-3">
-                {props.win === true ? <h1 className="text-warning">{props.active} WINS!</h1> :
+                {props.win === true ? <h1 className="text-success">{props.active} WINS!</h1> :
                     <h3>It is {props.active} turn with {props.activesymbol}!</h3>}
             </div>
             <button onClick={() => { props.setPlayer1(""), props.setPlayer2(""), props.setFirst(""), props.setWin(false), emptyBoard() }} className="btn btn-light my-2" id="restart">Restart</button>
-            <div className="container">
+            <div className="container bg-dark bg-opacity-25">
                 <div className="row justify-content-center">
                     <div onClick={() => assign(0)} className="d-flex align-items-center justify-content-center col-2 border-bottom border-end tile display-2">
                         {props.board[0]}
