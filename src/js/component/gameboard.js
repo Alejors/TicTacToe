@@ -4,6 +4,13 @@ const Gameboard = (props) => {
     useEffect(() => {
         props.setActive(props.player1);
         props.setActivesymbol(props.first);
+
+        return () => {
+            props.setActive('');
+            props.setActivesymbol('');
+            props.setWin(false), 
+            emptyBoard()
+        }
     }, [])
 
     useEffect(() => {
@@ -88,7 +95,7 @@ const Gameboard = (props) => {
                 {props.win === true ? <h1 className="text-success">{props.active} WINS!</h1> :
                     <h3>It is {props.active} turn with {props.activesymbol}!</h3>}
             </div>
-            <button onClick={() => { props.setPlayer1(""), props.setPlayer2(""), props.setFirst(""), props.setWin(false), emptyBoard() }} className="btn btn-light my-2" id="restart">Restart</button>
+            <button onClick={() => { props.setPlayer1(""), props.setPlayer2(""), props.setFirst("") }} className="btn btn-light my-2" id="restart">Restart</button>
             <div className="container bg-dark bg-opacity-25">
                 <div className="row justify-content-center">
                     <div onClick={() => assign(0)} className="d-flex align-items-center justify-content-center col-2 border-bottom border-end tile display-2">
