@@ -7,9 +7,9 @@ const Gameboard = (props) => {
     }, [])
 
     useEffect(() => {
-        if(props.win === false){
-        togglePlayer();
-        toggleSymbol();
+        if (props.win === false) {
+            togglePlayer();
+            toggleSymbol();
         }
     }, [props.board])
 
@@ -22,7 +22,6 @@ const Gameboard = (props) => {
     }
 
     let checkwinner = (i, board) => {
-        console.log(i);
         if (i === 0) {
             if ((board[0] === board[1] && board[1] === board[2]) || (board[0] === board[3] && board[3] === board[6]) || (board[0] === board[4] && board[4] === board[8])) {
                 props.setWin(true);
@@ -61,6 +60,10 @@ const Gameboard = (props) => {
                 props.setWin(true);
             }
         }
+        
+        if(board[0] !== '' && board[1] !== '' && board[2] !== '' && board[3] !== '' && board[4] !== '' && board[5] !== '' && board[6] !== '' && board[7] !== '' && board[8] !== '' && props.win === false){
+            window.alert("It's a tie...");
+        }
     }
 
     let assign = (i) => {
@@ -70,17 +73,22 @@ const Gameboard = (props) => {
             let niubord = [...props.board];
             niubord[i] = props.activesymbol;
             props.setBoard(niubord);
-            checkwinner(i, niubord);   
+            checkwinner(i, niubord);
         }
+    }
+
+    let emptyBoard = () => {
+        let emptyboard = ['','','','','','','','',''];
+        props.setBoard(emptyboard);
     }
 
     return (
         <>
             <div className="row mb-3">
-                {props.win === true ? <h1>{props.active} WINS!</h1> : 
-                <h3>It is {props.active} turn with {props.activesymbol}!</h3>}
+                {props.win === true ? <h1 className="text-warning">{props.active} WINS!</h1> :
+                    <h3>It is {props.active} turn with {props.activesymbol}!</h3>}
             </div>
-            <button onClick={() => { props.setPlayer1(""), props.setPlayer2(""), props.setFirst(""), props.setWin(false) }} className="btn btn-light my-2" id="restart">Restart</button>
+            <button onClick={() => { props.setPlayer1(""), props.setPlayer2(""), props.setFirst(""), props.setWin(false), emptyBoard() }} className="btn btn-light my-2" id="restart">Restart</button>
             <div className="container">
                 <div className="row justify-content-center">
                     <div onClick={() => assign(0)} className="d-flex align-items-center justify-content-center col-2 border-bottom border-end tile display-2">
